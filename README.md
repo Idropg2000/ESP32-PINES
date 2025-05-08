@@ -68,7 +68,7 @@ Interfaces: UART, SPI, I2C, PWM, etc.
 | GND   | -     | GND                 | Masa                                         |
 | EN    | -     | Reset               | Reinicia el microcontrolador                 |
 
-## Explicación detallada de las Notas, señor Jordi
+## Explicación detallada de las Notas
 
 | Nota escrita en la tabla | Explicación clara y sencilla |
 |--------------------------|------------------------------|
@@ -87,6 +87,11 @@ Interfaces: UART, SPI, I2C, PWM, etc.
 | **I2C SDA, SCL** | Pines usados para comunicar con sensores/pantallas por I2C (lento pero fácil). Estos son los recomendados pero puedes usar otros. |
 
 Pines a tener cuidado en arranque (boot):
+
+Cuando un pin pone depuración → sirve para enviar mensajes al ordenador.
+Cuando pone reservado flash → ni lo toques (te carga el sistema).
+Cuando pone ojo en boot → cuidado cómo lo conectas al arrancar.
+
 IO0 → LOW entra en modo flash
 
 IO2 → Debe estar LOW o flotando
