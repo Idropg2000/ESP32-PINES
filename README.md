@@ -22,7 +22,6 @@ Interfaces: UART, SPI, I2C, PWM, etc.
 
 ## Mapa de pines — ESP32 DevKit v1 (ESP32-WROOM-32D)
 
-## Mapa de pines — ESP32 DevKit v1 (ESP32-WROOM-32D)
 
 ### Lado izquierdo (VIN → D15)
 
@@ -69,6 +68,23 @@ Interfaces: UART, SPI, I2C, PWM, etc.
 | GND   | -     | GND                 | Masa                                         |
 | EN    | -     | Reset               | Reinicia el microcontrolador                 |
 
+## Explicación detallada de las Notas, señor Jordi
+
+| Nota escrita en la tabla | Explicación clara y sencilla |
+|--------------------------|------------------------------|
+| **Alimenta la placa desde fuente externa** | Conectas una fuente de alimentación (batería o fuente de 5V). Este pin (VIN) da energía a toda la placa si no usas USB. |
+| **Masa (GND)** | Es el negativo del circuito. Todas las tierras de tu proyecto deben ir conectadas al GND del ESP32. |
+| **Solo entrada** | Pines que solo reciben señales (ejemplo: sensores). No sirven para encender LEDs ni sacar señal. |
+| **ADC (Analog to Digital Converter)** | Lee señales analógicas (0 a 3.3V) y las convierte en números digitales (0–4095). Útil para potenciómetros o sensores analógicos. |
+| **Touch** | Sirve para crear botones táctiles (detecta toques sin contacto físico). Solo disponible en algunos pines. |
+| **DAC (Digital to Analog Converter)** | Permite crear señales analógicas (0 a 3.3V). Solo en D25 y D26. Útil para audio o salidas de voltaje variable. |
+| **HSPI CLK / CS** | Pines para comunicación SPI (con pantallas, memorias, etc.). Si no usas SPI, puedes usarlos como pines normales. |
+| **(ojo en boot)** | Estos pines (D0, D12, D15) influyen en el arranque. Si se conectan mal (por ejemplo a GND), la placa no arranca. Hay que tener precaución. |
+| **Interno (no usar)** | D9 y D10 están conectados a la memoria interna (flash). Si los tocas, dañas el funcionamiento de la placa. No se deben usar nunca. |
+| **UART TX0 / RX0 (depuración)** | Son los pines que comunican con el ordenador (por USB). Sirven para enviar/recibir texto (monitor serial). Se usan para ver mensajes cuando programas. |
+| **Reinicia el microcontrolador (EN)** | Pin que resetea la placa (igual que pulsar el botón reset). Si lo conectas a GND un instante, la placa reinicia. |
+| **Salidas SPI MOSI, MISO, CLK** | Pines usados para comunicación SPI (rápida, con pantallas, memorias, etc.). Se pueden usar como pines normales si no usas SPI. |
+| **I2C SDA, SCL** | Pines usados para comunicar con sensores/pantallas por I2C (lento pero fácil). Estos son los recomendados pero puedes usar otros. |
 
 Pines a tener cuidado en arranque (boot):
 IO0 → LOW entra en modo flash
