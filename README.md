@@ -97,3 +97,13 @@ IO0 → LOW entra en modo flash
 IO2 → Debe estar LOW o flotando
 
 IO15 / IO12 → No conectarlos a GND en boot (afectan arranque)
+
+## Explicación PULL-DOWN, PULL-UP resistencia en pulsador
+
+Cuando tú conectas un pulsador a un pin del ESP32, ese pin necesita tener siempre un valor claro: o HIGH (1) o LOW (0). El problema es que cuando el pulsador no está pulsado y no hay resistencia, el pin queda “al aire” o flotante — no está conectado ni a 0V ni a 3.3V — y el ESP32 puede leer valores aleatorios, porque capta interferencias o ruido eléctrico.
+
+Ahí es donde entra la resistencia pull-up o pull-down:
+
+Resistencia pull-down (a GND): Conectas una resistencia de 10 kΩ entre el pin y GND. Así, cuando el pulsador está abierto, el pin se mantiene a LOW (0). Cuando pulsas, conectas el pin a 3.3V y el estado pasa a HIGH (1).
+
+Resistencia pull-up (a Vcc): Conectas una resistencia entre el pin y 3.3V. Así, cuando el pulsador está abierto, el pin está en HIGH (1). Al pulsar, conectas el pin a GND y el estado pasa a LOW (0).
